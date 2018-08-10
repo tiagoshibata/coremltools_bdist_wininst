@@ -18,6 +18,6 @@ def setup_wrap(*args, **kwargs):
 
 @patch('setuptools.setup', wraps=setup_wrap)
 def run_setup(mock_setup):
-    import coremltools_setup
+    import coremltools.setup
 
 run_setup()
