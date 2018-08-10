@@ -15,7 +15,7 @@ install:
 build: false
 
 test_script:
-  - python -c "print('TODO Run tests in CI')"
+  - venv\Scripts\python -c "print('TODO Run tests in CI')"
 
 artifacts:
   - path: coremltools\dist\*
