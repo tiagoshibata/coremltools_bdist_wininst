@@ -8,13 +8,11 @@ environment:
     secure: cYpe2KP3MIZ1fd9WPBCo3g==
 max_jobs: 10
 
-install:
+build: false
+test_script: '%PYTHON%\python ci\test.py'
+after_test:
   - git submodule update --init
   - '%PYTHON%\python ci\build.py'
-
-build: false
-
-test_script: '%PYTHON%\python ci\test.py'
 
 artifacts:
   - path: coremltools\dist\*
