@@ -8,14 +8,12 @@ environment:
 max_jobs: 10
 
 install:
-  - SET PATH=%PYTHON%;%PYTHON%\Scripts;%PATH%
-  - python -m pip install -U pip
   - git submodule update --init
-  - python ci/build.py
+  - '%PYTHON%\python ci\build.py'
 
 build: false
 
-test_script: python ci/test.py
+test_script: '%PYTHON%\python ci\test.py'
 
 artifacts:
   - path: coremltools\dist\*
