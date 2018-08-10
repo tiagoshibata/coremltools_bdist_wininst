@@ -1,0 +1,23 @@
+image: Visual Studio 2017
+environment:
+  matrix:
+    - PYTHON: C:\Python34-x64
+    - PYTHON: C:\Python35-x64
+    - PYTHON: C:\Python36-x64
+    - PYTHON: C:\Python37-x64
+
+install:
+  - SET PATH=%PYTHON%;%PYTHON%\Scripts;%PATH%
+  - python -m pip install -U pip
+  - git submodule update --init
+  - python build.py
+
+build: false
+
+test_script:
+  - python -c "print('TODO Run tests in CI')"
+
+artifacts:
+  - path: coremltools\dist\*
+
+# TODO Cache pip dependencies
