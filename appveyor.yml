@@ -19,4 +19,5 @@ test_script: python ci/test.py
 artifacts:
   - path: coremltools\dist\*
 
-# TODO Cache pip dependencies
+cache:
+  - '%LOCALAPPDATA%\pip\Cache'

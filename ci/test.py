@@ -3,13 +3,13 @@ import subprocess
 import sys
 import traceback
 
+from custom_venv import CustomVenv
 
 def run_tests():
-    python_binary = next(x for x in ('venv/bin/python', 'venv/Scripts/python') if os.path.exists(x))
+    env = CustomVenv(clear=True, symlinks=True, with_pip=True, requirements=['-r', 'coremltools/test_requirements.pip'])
+    env.create('venv')
     def python(*args):
-        subprocess.check_call([python_binary, '-m'] + list(args))
-
-    python('pip', 'install', '-r', 'coremltools/test_requirements.pip')
+        subprocess.check_call([env.python, '-m'] + list(args))
     python('pytest', 'coremltools')
 
 

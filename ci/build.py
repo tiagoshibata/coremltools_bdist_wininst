@@ -1,22 +1,10 @@
 import subprocess
-import venv
 
-
-class CustomEnvironment(venv.EnvBuilder):
-    '''Virtual environment for the installation.
-
-    Install wheel in the venv for packaging.
-    '''
-    def post_setup(self, context):
-        self.python = context.env_exe
-        def pip(*args):
-            subprocess.check_call([self.python, '-m', 'pip'] + list(args))
-        pip('install', '-U', 'pip')
-        pip('install', 'wheel')
+from custom_venv import CustomVenv
 
 
 def main():
-    env = CustomEnvironment(clear=True, symlinks=True, with_pip=True)
+    env = CustomVenv(clear=True, symlinks=True, with_pip=True, requirements=['wheel'])
     env.create('venv')
     subprocess.check_call([env.python, '../patched_setup.py', 'bdist_wheel'], cwd='coremltools')
 
