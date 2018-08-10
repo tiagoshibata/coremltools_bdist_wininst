@@ -10,7 +10,7 @@ original_setup = setup
 def setup_wrap(*args, **kwargs):
     # Patch the project name and description
     kwargs.update({
-        'name': 'coremltools_bdist_wininst',
+        'name': 'coremltools_windows',
         'long_description': long_description,
     })
     original_setup(*args, **kwargs)

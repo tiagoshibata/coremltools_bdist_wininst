@@ -10,12 +10,11 @@ install:
   - SET PATH=%PYTHON%;%PYTHON%\Scripts;%PATH%
   - python -m pip install -U pip
   - git submodule update --init
-  - python build.py
+  - python ci/build.py
 
 build: false
 
-test_script:
-  - venv\Scripts\python -c "print('TODO Run tests in CI')"
+test_script: python ci/test.py
 
 artifacts:
   - path: coremltools\dist\*
