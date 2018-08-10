@@ -1,10 +1,11 @@
 image: Visual Studio 2017
 environment:
   matrix:
-    - PYTHON: C:\Python34-x64
     - PYTHON: C:\Python35-x64
     - PYTHON: C:\Python36-x64
     - PYTHON: C:\Python37-x64
+  pypi_password:
+    secure: cYpe2KP3MIZ1fd9WPBCo3g==
 max_jobs: 10
 
 install:
