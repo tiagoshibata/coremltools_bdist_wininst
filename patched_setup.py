@@ -8,10 +8,20 @@ original_setup = setup
 
 
 def setup_wrap(*args, **kwargs):
-    # Patch the project name and description
+    classifiers = [x for x in kwargs['classifiers']
+                   if not x.startswith('Operating System :: ') and not x.startswith('Programming Language :: ')]
+    classifiers.extend([
+        'Operating System :: Microsoft :: Windows',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+    ])
+
+    # Patch the project name, description and classifiers
     kwargs.update({
         'name': 'coremltools_windows',
         'long_description': long_description,
+        'classifiers': classifiers,
     })
     original_setup(*args, **kwargs)
 
