@@ -1,4 +1,5 @@
 image: Visual Studio 2017
+platform: x64
 environment:
   matrix:
     - PYTHON: C:\Python35-x64
@@ -9,7 +10,9 @@ environment:
 max_jobs: 10
 
 build: false
-test_script: '%PYTHON%\python ci\test.py'
+test_script:
+  - git submodule update --init
+  - '%PYTHON%\python ci\test.py'
 after_test:
   - git submodule update --init
   - '%PYTHON%\python ci\build.py'
